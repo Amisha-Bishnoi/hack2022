@@ -1,0 +1,87 @@
+
+/*
+class Node
+{
+    int data;
+    Node left;
+    Node right;
+    int height;
+};
+*/
+class Solution
+{
+    Node root;
+    
+    int height(Node node){
+        if(node==null)return 0;
+        return node.height;
+    }
+    
+    int balance(Node node){
+        if(node == null)return 0;
+        return height(node.left) - height(node.right);
+    }
+    int max(int a, int b) {
+        return (a > b) ? a : b;
+    }
+    
+    Node rightRotate(Node root){
+        Node newRoot = root.left;
+        Node temp = newRoot.right;
+        
+        newRoot.right = root;
+        root.left = temp;
+        
+        newRoot.height= 1+ max(height(newRoot.left),height(newRoot.right));
+        root.height= 1+ max(height(root.left),height(root.right));
+        
+        return newRoot;
+    }
+    
+    Node leftRotate(Node root){
+        Node newRoot = root.right;
+        Node temp = newRoot.left;
+        
+        newRoot.left = root;
+        root.right = temp;
+        
+        newRoot.height= 1+max(height(newRoot.left),height(newRoot.right));
+        root.height= 1+ max(height(root.left),height(root.right));
+        
+        return newRoot;
+    }
+    
+    public  Node insertToAVL(Node node,int k)
+    {
+        if(node==null){
+            return (new Node(k));
+        }
+        if(k<node.data){
+            node.left= insertToAVL(node.left,k);
+        }else if(k>node.data){
+            node.right= insertToAVL(node.right,k);
+        }else{
+            return node;
+        }
+        
+        node.height = 1+ Math.max(height(node.left),height(node.right));
+        
+        int balance=balance(node);
+        
+        if(balance>1 && k<node.left.data){
+            return rightRotate(node);
+        }
+         if(balance<-1 && k>node.right.data){
+            return leftRotate(node);
+        }
+         if(balance>1 && k>node.left.data){
+            node.left=leftRotate(node.left);
+            return rightRotate(node);
+        }
+        if(balance<-1 && k<node.right.data){
+            node.right=rightRotate(node.right);
+            return leftRotate(node);
+        }
+        return node;
+    }
+}    

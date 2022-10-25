@@ -1,0 +1,22 @@
+
+class Solution{
+    
+    public static ArrayList<Integer> largestAndSecondLargest(int n, int arr[])
+    {
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        int max=arr[0];
+        int second=-1;
+        for(int i=1;i<n;i++){
+            if(arr[i]>max){
+                second=max;
+                max=arr[i];
+            }
+            else if(arr[i]<max && arr[i]>second){
+                second=arr[i];
+            }
+        }
+        list.add(max);
+        list.add(second);
+        return list;
+    }
+}

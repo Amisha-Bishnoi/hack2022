@@ -1,0 +1,15 @@
+
+class Solution {
+    Node insert(Node root, int Key) {
+        Node temp=new Node(Key);
+        if(root==null)return temp;
+        else if(root.data>Key){
+            root.left=insert(root.left,Key);
+        }
+        else if(root.data<Key){
+            root.right=insert(root.right,Key);
+        }
+            return root;
+    }
+    
+}

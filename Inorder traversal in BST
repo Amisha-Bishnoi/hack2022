@@ -1,0 +1,15 @@
+class BST{
+    static void in(Node root, ArrayList<Integer> list){
+        if(root==null) return;
+        in(root.left,list);
+        list.add(root.data);
+        in(root.right,list);
+    }
+    ArrayList<Integer> inOrder(Node root)
+    {
+        ArrayList<Integer> list=new ArrayList<Integer>();
+        if(root==null)return list;
+        in(root,list);
+        return list;
+    }
+}

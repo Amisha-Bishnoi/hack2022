@@ -1,0 +1,39 @@
+
+class Tree {
+
+    public static Node deleteNode(Node root, int X) {
+        if(root==null)return null;
+         if(root.data>X){
+            root.left=deleteNode(root.left,X);
+        }
+        else if(root.data<X){
+            root.right=deleteNode(root.right,X);
+        }
+        else{
+            if(root.left==null || root.right==null){
+                Node temp=null;
+                temp = root.left == null ? root.right : root.left;
+                
+                if(temp==null)return null;
+                else return root;
+            }
+           
+            else{
+                Node suc= getSucc(root.right);
+                root.data=suc.data;
+                root.right=deleteNode(root.right,suc.data);
+            }
+           
+        }
+       return root;
+    }
+    static Node getSucc(Node root){
+           if(root==null)return null;
+            Node curr=root;
+            while(curr.left!= null){
+                curr=curr.left;
+            }
+            return curr;
+            
+        }
+}

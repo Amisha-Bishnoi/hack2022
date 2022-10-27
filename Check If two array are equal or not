@@ -1,0 +1,16 @@
+
+class Solution{
+
+    public static boolean check(long A[],long B[],int N)
+    {
+        HashMap<Long,Integer> h1 = new HashMap<Long,Integer>();
+        HashMap<Long,Integer> h2 = new HashMap<Long,Integer>();
+        for(long i : A){
+            h1.put(i,h1.getOrDefault(i,0)+1);
+        }
+        for(long i : B){
+            h2.put(i,h2.getOrDefault(i,0)+1);
+        }
+        return h1.equals(h2)?true:false;
+    }
+}

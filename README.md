@@ -29,8 +29,7 @@ From this very first year hacktober fest is accepting one's contribution
  
  4. Make pull request
  
- 5. Now, we will review the pull request and merge it,if finds it good (After merging you will be notified)
-
+ 5. Now, we will review the pull request and merge it
 
 ## Contribution
 
